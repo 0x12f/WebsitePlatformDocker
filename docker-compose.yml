@@ -16,9 +16,6 @@ services:
             - $PWD/engine:/var/www
             - $PWD/theme:/var/www/theme/docker
             - $PWD/var:/var/www/var
-            - $PWD/var/cache:/var/www/var/cache
-            - $PWD/var/upload:/var/www/var/upload
-            - $PWD/var/log:/var/www/var/log
         labels:
             - traefik.backend=0x12f
             - traefik.frontend.rule=Host:test.site.0x12f.com
