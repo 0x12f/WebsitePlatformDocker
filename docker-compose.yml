@@ -13,9 +13,9 @@ services:
         environment:
             docker: "true"
         volumes:
-            - $PWD/engine:/var/www
-            - $PWD/theme:/var/www/theme/docker
-            - $PWD/var:/var/www/var
+            - $PWD/engine:/var/www:ro
+            - $PWD/theme:/var/www/theme/docker:rw
+            - $PWD/var:/var/www/var:rw
         labels:
             - traefik.backend=0x12f
             - traefik.frontend.rule=Host:test.site.0x12f.com
