@@ -16,7 +16,7 @@ services:
             - $PWD/engine:/var/www:ro
             - $PWD/engine/var:/var/www/var:rw
             - $PWD/theme:/var/www/theme/docker:rw
-        container_name: php:0x12f
+        container_name: php:custom-0x12f
         labels:
             - traefik.backend=0x12f
             - traefik.frontend.rule=Host:test.site.0x12f.com
