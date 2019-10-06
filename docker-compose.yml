@@ -8,12 +8,10 @@ services:
     php:
         build:
             context: docker/php
-        working_dir: /var/www/engine
+        working_dir: /var/www
         command: php -S 0.0.0.0:8080 -t public
         environment:
             docker: "true"
-        ports:
-            - 8080:8080
         volumes:
             - $PWD/engine:/var/www
             - $PWD/theme:/var/www/theme
