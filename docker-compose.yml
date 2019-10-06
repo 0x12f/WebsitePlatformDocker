@@ -15,7 +15,7 @@ services:
         volumes:
             - $PWD/engine:/var/www:ro
             - $PWD/engine/var:/var/www/var:rw
-            - $PWD/theme:/var/www/theme/docker
+            - $PWD/theme:/var/www/theme
         labels:
             - traefik.backend=0x12f
             - traefik.frontend.rule=Host:test.site.0x12f.com
