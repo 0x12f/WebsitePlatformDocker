@@ -13,10 +13,15 @@ services:
         environment:
             docker: "true"
         volumes:
-            - $PWD/engine:/var/www:ro
-            - $PWD/engine/var:/var/www/var:rw
-            - $PWD/resource:/var/www/public/resource
-            - $PWD/theme:/var/www/theme
+            - $PWD/engine/app:/var/www/app:ro
+            - $PWD/engine/config:/var/www/config:ro
+            - $PWD/engine/public:/var/www/public:ro
+            - $PWD/engine/src:/var/www/src:ro
+            - $PWD/resource:/var/www/public/resource:ro
+            - $PWD/theme:/var/www/theme:ro
+            - $PWD/var:/var/www/var:rw
+            - $PWD/var/upload:/var/www/public/uploads:rw
+            - $PWD/engine/vendor:/var/www/vendor:ro
         labels:
             - traefik.backend=0x12f.test
             - traefik.frontend.rule=Host:test.site.0x12f.com
