@@ -18,7 +18,7 @@ services:
             - $PWD/resource:/var/www/public/resource
             - $PWD/theme:/var/www/theme
         labels:
-            - traefik.backend=0x12f
+            - traefik.backend=0x12f.test
             - traefik.frontend.rule=Host:test.site.0x12f.com
             - traefik.docker.network=web
             - traefik.port=8080
