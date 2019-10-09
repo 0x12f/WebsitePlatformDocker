@@ -1,12 +1,26 @@
 #!/bin/bash
 
-git submodule update --init --merge --remote
-$PWD/composer install
+# init submodule
+git submodule update --init --checkout --remote
+
+# install all php composer
+./composer install
+
+# make writable folders
 chmod 0777 $PWD/var -R
 chmod 0777 $PWD/engine/public/uploads -R
+
+# power on docker
 docker-compose up -d
+
+# update database schemes
 docker-compose run php vendor/bin/doctrine orm:schema-tool:create
+
+# make writable db file
 chmod 0777 $PWD/var/database.sqlite
+
+# save current version
+cd engine && git describe --exact-match --tags $(git log -n1 --pretty='%h') > ./var/version.txt
 
 # create admin user
 # login: admin
