@@ -3,6 +3,9 @@
 # shutdown docker
 docker-compose down
 
+# hard reset all changes
+git reset --hard
+
 # update current repo
 git pull
 
