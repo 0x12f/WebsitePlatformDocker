@@ -1,4 +1,4 @@
-version: '2'
+version: '3'
 networks:
     web:
         external: true
@@ -9,7 +9,7 @@ services:
         build:
             context: docker/php
         working_dir: /var/www
-        command: php -S 0.0.0.0:8080 -t public
+        command: php -S 0.0.0.0:9000 -t public
         environment:
             docker: "true"
         volumes:
@@ -23,10 +23,11 @@ services:
             - $PWD/var/upload:/var/www/public/uploads:rw
             - $PWD/engine/vendor:/var/www/vendor:ro
         labels:
-            - traefik.backend=0x12f.test
-            - traefik.frontend.rule=Host:test.site.0x12f.com
+            - traefik.enable=true
+            - traefik.backend=nails-salon.site.0x12f.com
+            - traefik.frontend.rule=Host:nails-salon.site.0x12f.com
+        #   - traefik.frontend.redirect.entryPoint=https
             - traefik.docker.network=web
-            - traefik.port=8080
         networks:
             - internal
             - web
