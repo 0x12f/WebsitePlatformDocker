@@ -8,6 +8,7 @@ services:
     php:
         build:
             context: docker/php
+        container_name: phpworker
         working_dir: /var/www
         command: php -S 0.0.0.0:9000 -t public
         environment:
@@ -33,6 +34,7 @@ services:
             - web
     cache:
         image: redis:4-alpine
+        container_name: redisworker
         networks:
             - internal
         labels:
