@@ -3,11 +3,14 @@
 # shutdown docker
 docker-compose down
 
+# hard reset all changes
+git reset --hard
+
 # update current repo
 git pull
 
 # update submodule
-submodule update --checkout --remote --force
+git submodule update --checkout --remote --force
 
 # install all php composer
 ./composer install
