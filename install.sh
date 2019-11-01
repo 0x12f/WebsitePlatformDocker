@@ -1,12 +1,13 @@
 #!/bin/bash
 
-# init submodule
-git submodule update --init --checkout --remote
+# init engine
+git clone -q -b master https://github.com/0x12f/WebsitePlatform.git engine
 
 # install all php composer
 ./composer install
 
-# make writable folders
+# make cmod files and folders
+chmod 0777 install.sh update.sh
 chmod 0777 $PWD/var -R
 chmod 0777 $PWD/engine/public/uploads -R
 

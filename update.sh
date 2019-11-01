@@ -9,13 +9,14 @@ git reset --hard
 # update current repo
 git pull
 
-# update submodule
-git submodule update --checkout --remote --force
+# update engine
+cd engine && git reset --hard && git pull -f && cd ..
 
 # install all php composer
 ./composer install
 
-# make writable folders
+# make cmod files and folders
+chmod 0777 install.sh update.sh
 chmod 0777 $PWD/var -R
 chmod 0777 $PWD/engine/public/uploads -R
 
