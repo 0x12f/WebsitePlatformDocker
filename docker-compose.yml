@@ -27,9 +27,16 @@ services:
 
     web:
         image: nginx:alpine
-        volumes_from:
-            - php
         volumes:
+            - $PWD/engine/app:/var/container/app:ro
+            - $PWD/engine/config:/var/container/config:ro
+            - $PWD/engine/public:/var/container/public:ro
+            - $PWD/engine/src:/var/container/src:ro
+            - $PWD/resource:/var/container/public/resource:ro
+            - $PWD/theme:/var/container/theme:ro
+            - $PWD/var:/var/container/var:rw
+            - $PWD/var/upload:/var/container/public/uploads:rw
+            - $PWD/engine/vendor:/var/container/vendor:ro
             - $PWD/nginx.conf:/etc/nginx/nginx.conf:ro
             - $PWD/var/log/nginx:/var/log/nginx
         labels:
