@@ -30,4 +30,4 @@ docker-compose run php vendor/bin/doctrine orm:schema-tool:update --force
 chmod 0777 $PWD/var/database.sqlite
 
 # save current version
-cd engine && git describe --exact-match --tags $(git log -n1 --pretty='%h') > ./var/version.txt
+cd engine && git describe --exact-match --tags $(git log -n1 --pretty='%h') > ../var/version.txt
