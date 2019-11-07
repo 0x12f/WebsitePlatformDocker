@@ -2,12 +2,19 @@
 .vscode
 .DS_Store
 
-/engine/*
+/engine
+
+/resource/*
+!/resource/.gitkeep
+
 /theme/*
 !/theme/.gitkeep
-/var/db.sqlite
-/var/database.sqlite
+
 /var/cache/*
 !/var/cache/.gitkeep
+
 /var/log/*
 !/var/log/.gitkeep
+
+/var/*.sqlite
+/var/version.txt

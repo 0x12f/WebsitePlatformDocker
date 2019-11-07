@@ -4,21 +4,20 @@ networks:
         external: true
 services:
     php:
-        image: 0x12f/php:1.0
-        working_dir: /var/www
+        image: 0x12f/php:latest
         command: php -S 0.0.0.0:9000 -t public
         environment:
             docker: "true"
         volumes:
-            - $PWD/engine/app:/var/www/app:ro
-            - $PWD/engine/config:/var/www/config:ro
-            - $PWD/engine/public:/var/www/public:ro
-            - $PWD/engine/src:/var/www/src:ro
-            - $PWD/resource:/var/www/public/resource:ro
-            - $PWD/theme:/var/www/theme:ro
-            - $PWD/var:/var/www/var:rw
-            - $PWD/var/upload:/var/www/public/uploads:rw
-            - $PWD/engine/vendor:/var/www/vendor:ro
+            - $PWD/engine/app:/var/container/app:ro
+            - $PWD/engine/config:/var/container/config:ro
+            - $PWD/engine/public:/var/container/public:ro
+            - $PWD/engine/src:/var/container/src:ro
+            - $PWD/resource:/var/container/public/resource:ro
+            - $PWD/theme:/var/container/theme:ro
+            - $PWD/var:/var/container/var:rw
+            - $PWD/var/upload:/var/container/public/uploads:rw
+            - $PWD/engine/vendor:/var/container/vendor:ro
         labels:
             - traefik.enable=true
             - traefik.backend=example.site.0x12f.com
