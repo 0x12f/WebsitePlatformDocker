@@ -17,4 +17,4 @@
 !/var/log/.gitkeep
 
 /var/*.sqlite
-/var/version.txt
+/var/version*.txt

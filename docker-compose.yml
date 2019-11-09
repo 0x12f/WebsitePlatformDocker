@@ -1,9 +1,11 @@
-version: '3'
+version: "2"
+
 networks:
     lan:
         external: false
     web:
         external: true
+
 services:
     php:
         image: 0x12f/php:latest
@@ -14,11 +16,12 @@ services:
             - $PWD/engine/config:/var/container/config:ro
             - $PWD/engine/public:/var/container/public:ro
             - $PWD/engine/src:/var/container/src:ro
+            - $PWD/engine/vendor:/var/container/vendor:ro
             - $PWD/resource:/var/container/public/resource:ro
             - $PWD/theme:/var/container/theme:ro
             - $PWD/var:/var/container/var:rw
             - $PWD/var/upload:/var/container/public/uploads:rw
-            - $PWD/engine/vendor:/var/container/vendor:ro
+            - $PWD/settings.php:/var/container/config/settings.php
         labels:
             - traefik.enable=false
         networks:
@@ -27,16 +30,9 @@ services:
 
     web:
         image: nginx:alpine
+        volumes_from:
+            - php
         volumes:
-            - $PWD/engine/app:/var/container/app:ro
-            - $PWD/engine/config:/var/container/config:ro
-            - $PWD/engine/public:/var/container/public:ro
-            - $PWD/engine/src:/var/container/src:ro
-            - $PWD/resource:/var/container/public/resource:ro
-            - $PWD/theme:/var/container/theme:ro
-            - $PWD/var:/var/container/var:rw
-            - $PWD/var/upload:/var/container/public/uploads:rw
-            - $PWD/engine/vendor:/var/container/vendor:ro
             - $PWD/nginx.conf:/etc/nginx/nginx.conf:ro
             - $PWD/var/log/nginx:/var/log/nginx
         labels:
