@@ -46,7 +46,6 @@ services:
 chmod -R 0666 resource
 chmod -R 0666 theme
 chmod -R 0777 var
-chmod 0777 var/database.sqlite
 ```
 
 #### Инициализация схемы базы данных
