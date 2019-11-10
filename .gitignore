@@ -2,12 +2,6 @@
 .vscode
 .DS_Store
 
-/resource/*
-!/resource/.gitkeep
-
-/theme/*
-!/theme/.gitkeep
-
 /var/cache/*
 !/var/cache/.gitkeep
 
