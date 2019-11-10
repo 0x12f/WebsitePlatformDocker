@@ -2,8 +2,6 @@
 .vscode
 .DS_Store
 
-/engine
-
 /resource/*
 !/resource/.gitkeep
 
@@ -17,4 +15,4 @@
 !/var/log/.gitkeep
 
 /var/*.sqlite
-/var/version*.txt
+/version*.txt

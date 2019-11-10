@@ -1,54 +1,23 @@
-version: "2"
+version: "3"
 
 networks:
-    lan:
-        external: false
     web:
         external: true
 
 services:
-    php:
-        image: 0x12f/php:latest
-        environment:
-            docker: "true"
+    platform:
+        image:  0x12f/platform:latest
         volumes:
-            - $PWD/engine/app:/var/container/app:ro
-            - $PWD/engine/config:/var/container/config:ro
-            - $PWD/engine/public:/var/container/public:ro
-            - $PWD/engine/src:/var/container/src:ro
-            - $PWD/engine/vendor:/var/container/vendor:ro
             - $PWD/resource:/var/container/public/resource:ro
             - $PWD/theme:/var/container/theme:ro
             - $PWD/var:/var/container/var:rw
             - $PWD/var/upload:/var/container/public/uploads:rw
-            - $PWD/settings.php:/var/container/config/settings.php
-        labels:
-            - traefik.enable=false
-        networks:
-            - lan
-            - web
-
-    web:
-        image: nginx:alpine
-        volumes_from:
-            - php
-        volumes:
-            - $PWD/nginx.conf:/etc/nginx/nginx.conf:ro
-            - $PWD/var/log/nginx:/var/log/nginx
         labels:
             - traefik.enable=true
+            - traefik.port=80
             - traefik.backend=example.site.0x12f.com
             - traefik.frontend.rule=Host:example.site.0x12f.com
-          # - traefik.frontend.redirect.entryPoint=https
+        #   - traefik.frontend.redirect.entryPoint=https
             - traefik.docker.network=web
         networks:
-            - lan
             - web
-
-    cache:
-        image: redis:4-alpine
-        restart: always
-        labels:
-            - traefik.enable=false
-        networks:
-            - lan
