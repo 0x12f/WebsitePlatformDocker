@@ -2,8 +2,11 @@
 .vscode
 .DS_Store
 
-/var/cache/*
-!/var/cache/.gitkeep
+/var/cache/af/*
+!/var/cache/af/.gitkeep
+
+/var/cache/proxies/*
+!/var/cache/proxies/.gitkeep
 
 /var/log/*
 !/var/log/.gitkeep
