@@ -7,6 +7,9 @@ networks:
 services:
     platform:
         image:  0x12f/platform:latest
+        environment:
+            - DEBUG=1
+            - ANALYTICS=1
         volumes:
             - $PWD/resource:/var/container/public/resource:ro
             - $PWD/theme:/var/container/theme:ro
