@@ -11,5 +11,8 @@
 /var/log/*
 !/var/log/.gitkeep
 
+/var/xml/*.
+!/var/xml/.gitkeep
+
 /var/*.sqlite
 /version*.txt
