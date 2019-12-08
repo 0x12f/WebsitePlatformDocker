@@ -8,8 +8,10 @@ services:
     platform:
         image:  0x12f/platform:latest
         environment:
-            - DEBUG=1
+            - DEBUG=0
             - ANALYTICS=1
+          # - SALT=Please-Change-Me
+          # - DATABASE=mysql://user:secret@localhost/mydb
         volumes:
             - $PWD/resource:/var/container/public/resource:ro
             - $PWD/theme:/var/container/theme:ro
