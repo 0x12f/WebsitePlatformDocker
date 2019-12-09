@@ -43,8 +43,8 @@ services:
 
 #### Права на папки
 ```shell script
-chmod -R 0666 resource
-chmod -R 0666 theme
+chmod -R 0777 resource
+chmod -R 0777 theme
 chmod -R 0777 var
 ```
 
