@@ -9,7 +9,7 @@ services:
         image:  0x12f/platform:latest
         environment:
             - DEBUG=1
-            - ANALYTICS=1
+          # - SENTRY=""
           # - SALT=Please-Change-Me
           # - DATABASE=mysql://user:secret@localhost/mydb
         volumes:
