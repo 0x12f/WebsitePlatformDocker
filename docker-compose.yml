@@ -13,8 +13,9 @@ services:
           # - SALT=Please-Change-Me
           # - DATABASE=mysql://user:secret@localhost/mydb
         volumes:
+            - ./plugin:/var/container/plugin:ro
             - ./resource:/var/container/public/resource:ro
-            - ./theme:/var/container/theme:ro
+            - ./theme:/var/container/theme:rw
             - ./var:/var/container/var:rw
             - ./var/upload:/var/container/public/uploads:rw
         labels:
