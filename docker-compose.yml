@@ -9,9 +9,10 @@ services:
         image:  0x12f/platform:latest
         environment:
             - DEBUG=1
-          # - SENTRY=""
           # - SALT=Please-Change-Me
+          # - SIMPLE_PHONE_CHECK=true
           # - DATABASE=mysql://user:secret@localhost/mydb
+          # - SENTRY=""
         volumes:
             - ./plugin:/var/container/plugin:ro
             - ./resource:/var/container/public/resource:ro
