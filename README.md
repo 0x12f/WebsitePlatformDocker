@@ -7,6 +7,7 @@ docker run --detach \
   --publish 80:80 \
   --restart always \ 
   --volume $PWD/resource:/var/container/public/resource:ro \
+  --volume $PWD/plugin:/var/container/public/plugin:ro \
   --volume $PWD/theme:/var/container/theme:ro \
   --volume $PWD/var:/var/container/var:rw \
   --volume $PWD/var/upload:/var/container/public/uploads:rw \
