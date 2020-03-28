@@ -26,10 +26,11 @@ services:
     platform:
         image:  0x12f/platform:latest
         volumes:
-            - $PWD/resource:/var/container/public/resource:ro
-            - $PWD/theme:/var/container/theme:ro
-            - $PWD/var:/var/container/var:rw
-            - $PWD/var/upload:/var/container/public/uploads:rw
+            - ./resource:/var/container/public/resource:ro
+            - ./plugin:/var/container/plugin:rw
+            - ./theme:/var/container/theme:ro
+            - ./var:/var/container/var:rw
+            - ./var/upload:/var/container/public/uploads:rw
         labels:
             - traefik.enable=true
             - traefik.port=80
@@ -44,6 +45,7 @@ services:
 #### Права на папки
 ```shell script
 chmod -R 0777 resource
+chmod -R 0777 plugin
 chmod -R 0777 theme
 chmod -R 0777 var
 ```
