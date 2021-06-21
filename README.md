@@ -1,11 +1,11 @@
 ## Template to get started with the platform
 
-[Installation instructions](https://github.com/0x12f/platform/wiki/Installation-(Docker)) from Docker template [0x12f/platform-template](https://github.com/0x12f/platform-template)
+[Installation instructions](https://github.com/getwebspace/platform/wiki/Installation-(Docker)) from Docker template [getwebspace/platform-template](https://github.com/getwebspace/platform-template)
 
 #### Running a container from the command line
 ```shell script
 docker run --detach \
-  --name 0x12f-platform \
+  --name getwebspace-platform \
   --publish 80:80 \
   --restart always \ 
   --volume $PWD/resource:/var/container/public/resource:ro \
@@ -13,7 +13,7 @@ docker run --detach \
   --volume $PWD/theme:/var/container/theme:ro \
   --volume $PWD/var:/var/container/var:rw \
   --volume $PWD/var/upload:/var/container/public/uploads:rw \
-  0x12f/platform:latest
+  getwebspace/platform:latest
 ```
 
 #### Running a container with docker-compose.yml
@@ -27,7 +27,12 @@ networks:
 
 services:
     platform:
-        image:  0x12f/platform:latest
+        image:  getwebspace/platform:latest
+        environment:
+            - DEBUG=1
+          # - SALT=Please-Change-Me
+          # - SIMPLE_PHONE_CHECK=1
+          # - DATABASE=mysql://user:secret@localhost/mydb
         volumes:
             - ./resource:/var/container/public/resource:ro
             - ./plugin:/var/container/plugin:rw
@@ -35,12 +40,12 @@ services:
             - ./var:/var/container/var:rw
             - ./var/upload:/var/container/public/uploads:rw
         labels:
-            - traefik.enable=true
-            - traefik.port=80
-            - traefik.backend=example.site.0x12f.com
-            - traefik.frontend.rule=Host:example.site.0x12f.com
-          # - traefik.frontend.redirect.entryPoint=https
-            - traefik.docker.network=web
+            - "traefik.enable=true"
+            - "traefik.http.routers.example.entrypoints=http,https"
+            - "traefik.http.routers.example.tls=true"
+            - "traefik.http.routers.example.tls.certresolver=letsEncrypt"
+            - "traefik.http.routers.example.rule=Host(`example.com`)"
+            - "traefik.http.services.example-service.loadbalancer.server.port=80"
         networks:
             - web
 ```

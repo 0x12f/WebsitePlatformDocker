@@ -6,13 +6,12 @@ networks:
 
 services:
     platform:
-        image:  0x12f/platform:latest
+        image:  getwebspace/platform:latest
         environment:
             - DEBUG=1
           # - SALT=Please-Change-Me
           # - SIMPLE_PHONE_CHECK=1
           # - DATABASE=mysql://user:secret@localhost/mydb
-          # - SENTRY=""
         volumes:
             - ./plugin:/var/container/plugin:ro
             - ./resource:/var/container/public/resource:ro
@@ -20,11 +19,11 @@ services:
             - ./var:/var/container/var:rw
             - ./var/upload:/var/container/public/uploads:rw
         labels:
-            - traefik.enable=true
-            - traefik.port=80
-            - traefik.backend=example.site.0x12f.com
-            - traefik.frontend.rule=Host:example.site.0x12f.com
-        #   - traefik.frontend.redirect.entryPoint=https
-            - traefik.docker.network=web
+            - "traefik.enable=true"
+            - "traefik.http.routers.example.entrypoints=http,https"
+            - "traefik.http.routers.example.tls=true"
+            - "traefik.http.routers.example.tls.certresolver=letsEncrypt"
+            - "traefik.http.routers.example.rule=Host(`example.com`)"
+            - "traefik.http.services.example-service.loadbalancer.server.port=80"
         networks:
             - web
