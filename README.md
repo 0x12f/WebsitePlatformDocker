@@ -47,5 +47,4 @@ After starting the container, go to `https://[your-domain]/cup/system`
 
 
 ## License
-
 Licensed under the MIT license. See [License File](LICENSE.md) for more information.

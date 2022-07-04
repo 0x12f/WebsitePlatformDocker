@@ -9,7 +9,6 @@ services:
         image:  getwebspace/platform:latest
         environment:
             - DEBUG=1
-          # - SALT=Please-Change-Me
           # - SIMPLE_PHONE_CHECK=1
           # - DATABASE=mysql://user:secret@localhost/mydb
         volumes:
