@@ -35,10 +35,11 @@ services:
 
 #### Folder chmod's
 ```shell script
-chmod -R 0777 resource
+chmod -R 0755 resource
 chmod -R 0777 plugin
 chmod -R 0777 theme
 chmod -R 0777 var
+chmod -R 0776 var/upload
 ```
 
 #### Database schema initialization and update
