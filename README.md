@@ -18,7 +18,7 @@ version: "3"
 
 services:
     platform:
-        image: getwebspace/platform:latest
+        image: ghcr.io/getwebspace/platform:master
         environment:
             - DEBUG=1
           # - SIMPLE_PHONE_CHECK=1
