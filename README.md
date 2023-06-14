@@ -1,7 +1,6 @@
 ![Docker builder](https://github.com/getwebspace/platform/workflows/Docker%20builder/badge.svg)
 ![License](https://img.shields.io/github/license/getwebspace/platform)
 ![](https://visitor-badge.glitch.me/badge?page_id=getwebspace.platform.template)
-[![Telegram](https://img.shields.io/badge/chat-on%20Telegram-2ba2d9.svg)](https://t.me/WSEPlatform)
 
 ## Template to get started with the platform
 
@@ -18,7 +17,7 @@ version: "3"
 
 services:
     platform:
-        image: ghcr.io/getwebspace/platform:master
+        image: ghcr.io/getwebspace/platform:latest
         environment:
             - DEBUG=1
           # - SIMPLE_PHONE_CHECK=1
