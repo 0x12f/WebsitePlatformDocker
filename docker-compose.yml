@@ -6,7 +6,7 @@ networks:
 
 services:
     platform:
-        image: ghcr.io/getwebspace/platform:master
+        image: ghcr.io/getwebspace/platform:latest
         environment:
             - DEBUG=1
           # - SIMPLE_PHONE_CHECK=1
@@ -17,12 +17,12 @@ services:
             - ./theme:/var/container/theme:rw
             - ./var:/var/container/var:rw
             - ./var/upload:/var/container/public/uploads:rw
-        labels:
-            - "traefik.enable=true"
-            - "traefik.http.routers.example.entrypoints=http,https"
-            - "traefik.http.routers.example.tls=true"
-            - "traefik.http.routers.example.tls.certresolver=letsEncrypt"
-            - "traefik.http.routers.example.rule=Host(`example.com`)"
-            - "traefik.http.services.example-service.loadbalancer.server.port=80"
+     #  labels:
+     #      - "traefik.enable=true"
+     #      - "traefik.http.routers.example.entrypoints=http,https"
+     #      - "traefik.http.routers.example.tls=true"
+     #      - "traefik.http.routers.example.tls.certresolver=letsEncrypt"
+     #      - "traefik.http.routers.example.rule=Host(`example.com`)"
+     #      - "traefik.http.services.example-service.loadbalancer.server.port=80"
         networks:
             - web
